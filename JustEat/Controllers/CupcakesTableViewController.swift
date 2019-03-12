@@ -37,4 +37,14 @@ class CupcakesTableViewController: UITableViewController {
 
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let toppingsVC = storyboard?.instantiateViewController(withIdentifier: "ToppingsVC") as? ToppingsTableViewController else{
+            fatalError("error")
+        }
+        
+        toppingsVC.cupcake = ProductsFactory.shared().cupcakes[indexPath.row]
+        navigationController?.pushViewController(toppingsVC, animated: true)
+    }
 }
