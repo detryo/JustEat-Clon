@@ -16,6 +16,8 @@
 		3610D45222302A3B0020E485 /* ToppingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3610D45122302A3B0020E485 /* ToppingsTableViewController.swift */; };
 		3610D45422302A710020E485 /* CupcakesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3610D45322302A710020E485 /* CupcakesTableViewController.swift */; };
 		3610D45A22302B8E0020E485 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3610D45922302B8E0020E485 /* OrderViewController.swift */; };
+		36401D202236CFA300D1AD90 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36401D1F2236CFA300D1AD90 /* Product.swift */; };
+		36401D222236D12800D1AD90 /* ProductsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36401D212236D12800D1AD90 /* ProductsFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		3610D45122302A3B0020E485 /* ToppingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToppingsTableViewController.swift; sourceTree = "<group>"; };
 		3610D45322302A710020E485 /* CupcakesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CupcakesTableViewController.swift; sourceTree = "<group>"; };
 		3610D45922302B8E0020E485 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
+		36401D1F2236CFA300D1AD90 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		36401D212236D12800D1AD90 /* ProductsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,7 @@
 				3610D45122302A3B0020E485 /* ToppingsTableViewController.swift */,
 				3610D45322302A710020E485 /* CupcakesTableViewController.swift */,
 				3610D45922302B8E0020E485 /* OrderViewController.swift */,
+				36401D1E2236CEEC00D1AD90 /* Model */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -90,6 +95,15 @@
 				3610D44D223024A60020E485 /* cupcakes.json */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		36401D1E2236CEEC00D1AD90 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				36401D1F2236CFA300D1AD90 /* Product.swift */,
+				36401D212236D12800D1AD90 /* ProductsFactory.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,7 +181,9 @@
 			files = (
 				3610D45222302A3B0020E485 /* ToppingsTableViewController.swift in Sources */,
 				3610D45422302A710020E485 /* CupcakesTableViewController.swift in Sources */,
+				36401D202236CFA300D1AD90 /* Product.swift in Sources */,
 				3610D43C223023030020E485 /* AppDelegate.swift in Sources */,
+				36401D222236D12800D1AD90 /* ProductsFactory.swift in Sources */,
 				3610D45A22302B8E0020E485 /* OrderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
