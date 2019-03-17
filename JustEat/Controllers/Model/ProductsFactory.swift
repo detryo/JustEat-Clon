@@ -10,24 +10,32 @@ import Foundation
 
 class ProductsFactory {
     var cupcakes = [Product]()
+    var topping = [Product]()
     
     private static var sharedFactory : ProductsFactory = {
         let factory = ProductsFactory()
         return factory
     }()
     
-    init() {
-        guard let url = Bundle.main.url(forResource: "cupcakes", withExtension: "json") else {
-            fatalError("error with cupcakes json")
+    private init() {
+       cupcakes = loadProduct(name: "cupcakes")
+       topping = loadProduct(name: "toppings")
+    }
+    
+    private func loadProduct(name : String) -> [Product] {
+        guard let url = Bundle.main.url(forResource: name, withExtension: "json") else {
+            fatalError("error")
         }
+        var tempProducts = [Product]()
+        
         if let data = try? Data(contentsOf: url){
             let decoder = JSONDecoder()
-            cupcakes = (try? decoder.decode([Product].self, from: data)) ?? [Product]()
-            // Ordenar alfabeticamente
-            cupcakes.sort {
+            tempProducts = (try? decoder.decode([Product].self, from: data)) ?? [Product]()
+            tempProducts.sort{
                 return $0.name < $1.name
             }
         }
+        return tempProducts
     }
     
     class func shared() -> ProductsFactory {
