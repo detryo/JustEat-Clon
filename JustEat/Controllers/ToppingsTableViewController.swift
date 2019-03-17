@@ -11,6 +11,7 @@ import UIKit
 class ToppingsTableViewController: UITableViewController {
     
     var cupcake : Product?
+    var selectedTopping = Set<Product>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,22 @@ class ToppingsTableViewController: UITableViewController {
         cell.textLabel?.text = "\(topping.name) - \(topping.price)€"
         cell.detailTextLabel?.text = topping.description
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) else {
+            fatalError("error")
+        }
+        let topping = ProductsFactory.shared().topping[indexPath.row]
+        
+        if selectedTopping.contains(topping) {
+            cell.accessoryType = .none
+            selectedTopping.insert(topping)
+        } else {
+            cell.accessoryType = .checkmark
+            selectedTopping.insert(topping)
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
  
 
