@@ -27,4 +27,5 @@ struct Order: Codable, Hashable {
         return topping.reduce(cupcake.price) { $0 + $1.price}
         
     }
+    
 }

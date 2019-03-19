@@ -20,9 +20,34 @@ class OrderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let image = imageView.image
-        imageView.image = nil
-        imageView.image = image?.withRenderingMode(.alwaysTemplate)
+        
+        let order = Order(cupcake: cupcake, topping: toppings)
+        showOrderDetails(order)
+        sendToServer(order)
+        
+        title = "Order done"
+        navigationItem.hidesBackButton = true
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+    }
+    
+    func showOrderDetails(_ order : Order) {
+        orderLabel.text = order.name
+        costLabel.text = "\(order.price)€"
+    }
+    
+    func sendToServer(_ order : Order) {
+        
+        let encoder = JSONEncoder()
+        do{
+            let data = try encoder.encode(order)
+            // enviar data al server para su posterior procesado en la tienda
+            
+        }catch {
+            print("error")
+        }
+    }
+    
+    @objc func done(){
+        navigationController?.popToRootViewController(animated: true)
     }
 }
