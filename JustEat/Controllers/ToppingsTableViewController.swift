@@ -10,7 +10,7 @@ import UIKit
 
 class ToppingsTableViewController: UITableViewController {
     
-    var cupcake : Product?
+    var cupcake : Product!
     var selectedTopping = Set<Product>()
 
     override func viewDidLoad() {
@@ -57,6 +57,13 @@ class ToppingsTableViewController: UITableViewController {
  
 
     @objc func placeOrder(){
+        guard let orderViewController = storyboard?.instantiateViewController(withIdentifier: "OrderVC") as? OrderViewController else {
+            fatalError("error")
+        }
         
+        orderViewController.cupcake = cupcake
+        orderViewController.toppings = selectedTopping
+        
+        navigationController?.pushViewController(orderViewController, animated: true)
     }
 }
