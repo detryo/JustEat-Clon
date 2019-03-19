@@ -24,6 +24,7 @@ class OrderViewController: UIViewController {
         let order = Order(cupcake: cupcake, topping: toppings)
         showOrderDetails(order)
         sendToServer(order)
+        donate(order)
         
         title = "Order done"
         navigationItem.hidesBackButton = true
@@ -36,15 +37,36 @@ class OrderViewController: UIViewController {
     }
     
     func sendToServer(_ order : Order) {
-        
         let encoder = JSONEncoder()
         do{
             let data = try encoder.encode(order)
-            // enviar data al server para su posterior procesado en la tienda
-            
+
         }catch {
             print("error")
         }
+    }
+    
+    func donate(_ order : Order) {
+        
+        let activity = NSUserActivity(activityType: "com.cristiansedano.JustEat.order")
+        let orderName = order.name
+        
+        if order.cupcake.name.last == "a" {
+            activity.title = "Pedir una \(orderName)"
+        }else {
+            activity.title = "Pedir un \(orderName)"
+        }
+        
+        activity.isEligibleForSearch = true
+        activity.isEligibleForPrediction = true
+        
+        let encoder = JSONEncoder()
+        if let orderData = try? encoder.encode(order) {
+            activity.userInfo = ["order" : orderData]
+        }
+        
+        activity.persistentIdentifier = NSUserActivityPersistentIdentifier(orderName)
+        self.userActivity = activity
     }
     
     @objc func done(){
