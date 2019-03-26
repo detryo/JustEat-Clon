@@ -41,28 +41,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-    // Metodo llamado automaticamente al seleccionar un Siri Shortcut
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         
         if userActivity.activityType == "com.cristiansedano.JustEat.order" {
             guard let navController = window?.rootViewController as? UINavigationController else {
                 fatalError("error")
             }
-            
             guard let orderVC = navController.storyboard?.instantiateViewController(withIdentifier: "OrderVC") as? OrderViewController else {
                 fatalError("error")
             }
-            
             if let order = Order(from: userActivity.userInfo!["order"] as? Data ){
                 orderVC.cupcake = order.cupcake
                 orderVC.toppings = order.topping
-                
                 navController.pushViewController(orderVC, animated: true)
             }
         }
-        
         return true
     }
-
 }
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Intents
 
 class OrderViewController: UIViewController {
     
@@ -66,6 +67,7 @@ class OrderViewController: UIViewController {
         }
         
         activity.persistentIdentifier = NSUserActivityPersistentIdentifier(orderName)
+        activity.suggestedInvocationPhrase = "I wont a dessert"
         self.userActivity = activity
     }
     
